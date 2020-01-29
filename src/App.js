@@ -7,7 +7,14 @@ function App() {
   return (
     <div className="App">
       <Header title="Dzianis's Awesome ReactJS Course"/>
-      <Card title="Card Title" content="Card Content"/>
+        <div className="container">
+            <div className="row">
+                <div className="col-md-4">
+                    <Card title="Card Title" content="Card Content"/>
+                </div>
+            </div>
+        </div>
+
     </div>
   );
 }
