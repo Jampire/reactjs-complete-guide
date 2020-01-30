@@ -10,7 +10,7 @@ function App() {
         <div className="container">
             <div className="row">
                 <div className="col-md-4">
-                    <Card title="Card Title" content="Card Content"/>
+                    <Card header="Card Header" title="Card Title" content="Card Content"/>
                 </div>
             </div>
         </div>

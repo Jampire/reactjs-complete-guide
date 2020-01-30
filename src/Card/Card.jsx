@@ -1,14 +1,33 @@
-import React from "react";
+import React, {Component} from 'react';
+import './Card.scss';
 
-function card(props) {
-    return (
-        <div className="card my-4">
-            <h5 className="card-header">{props.title}</h5>
-            <div className="card-body">
-                <p className="text-justify">{props.content}</p>
+class Card extends Component {
+    state = {
+        checked: false,
+        borderClass: '',
+        textClass: ''
+    };
+
+    checkBoxHandler = () => {
+        this.setState({checked: !this.state.checked});
+    };
+
+    render() {
+        return (
+            <div className={`card mb-3 my-4${this.state.checked ? ' border-success' : ''}`}>
+                <div className='card-header'>
+                    <span className='float-left'>{this.props.header}</span>
+                    <label className='float-right'>
+                         <input type='checkbox' onClick={this.checkBoxHandler} defaultChecked={this.state.checked}/>
+                    </label>
+                </div>
+                <div className={`card-body${this.state.checked ? ' text-success' : ''}`}>
+                    <h5 className='card-title'>{this.props.title}</h5>
+                    <p className='card-text text-justify'>{this.props.content}</p>
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 
-export default card;
+export default Card;
