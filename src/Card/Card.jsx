@@ -2,11 +2,7 @@ import React, {Component} from 'react';
 import './Card.scss';
 
 class Card extends Component {
-    state = {
-        checked: false,
-        borderClass: '',
-        textClass: ''
-    };
+    state = {checked: false};
 
     checkBoxHandler = () => {
         this.setState({checked: !this.state.checked});
