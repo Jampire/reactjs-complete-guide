@@ -1,20 +1,18 @@
-import React, {useState} from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import Person from './Person/Person';
 
-// function App() {
-// class App extends Component {
-const App = props => {
-    const [personState, setPersonState] = useState({
+class App extends Component {
+    state = {
         persons: [
             {name: 'Den', age: 35},
             {name: 'Arsen', age: 24},
             {name: 'Denis', age: 29},
         ]
-    });
+    };
 
-    const switchNameHandler = (newName) => {
-        setPersonState({
+    switchNameHandler = (newName) => {
+        this.setState({
             persons: [
                 {name: 'Den!!!', age: 35},
                 {name: newName, age: 24},
@@ -23,22 +21,20 @@ const App = props => {
         });
     };
 
-    const [keyState, setKeyState] = useState('some other value');
-
-    console.log(personState, keyState);
-
-    return (
-        <div className="App">
-            <h1>Hi, I'm here</h1>
-            <button onClick={() => switchNameHandler('Arsen?')}>Switch the name</button>
-            <Person
-                name={personState.persons[0].name} age={personState.persons[0].age}/>
-            <Person click={switchNameHandler.bind(this, 'Arsen!')}
-                name={personState.persons[1].name} age={personState.persons[1].age}>Hobbies: Laziness</Person>
-            <Person
-                name={personState.persons[2].name} age={personState.persons[2].age}/>
-        </div>
-    );
-};
+    render() {
+        return (
+            <div className="App">
+                <h1>Hi, I'm here</h1>
+                <button onClick={() => this.switchNameHandler('Arsen?')}>Switch the name</button>
+                <Person
+                    name={this.state.persons[0].name} age={this.state.persons[0].age}/>
+                <Person click={this.switchNameHandler.bind(this, 'Arsen!')}
+                        name={this.state.persons[1].name} age={this.state.persons[1].age}>Hobbies: Laziness</Person>
+                <Person
+                    name={this.state.persons[2].name} age={this.state.persons[2].age}/>
+            </div>
+        );
+    }
+}
 
 export default App;
