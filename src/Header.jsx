@@ -12,7 +12,7 @@ function header(props) {
                 <div className="collapse navbar-collapse" id="navbarResponsive">
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item active">
-                            <span className="nav-link">Task 1
+                            <span className="nav-link">Task 3
                                 <span className="sr-only">(current)</span>
                             </span>
                         </li>
