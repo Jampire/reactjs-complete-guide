@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Card.scss';
-import InputText from "./includes/InputText";
-import InputTextarea from "./includes/InputTextarea";
+import InputText from '../common/components/InputText/InputText';
+import InputTextarea from '../common/components/InputTextarea/InputTextarea';
 
 class Card extends Component {
     state = {
@@ -14,7 +14,7 @@ class Card extends Component {
         boxChecked: false,
         borderColorClass: '',
         textColorClass: '',
-        penActivated: false
+        isEdit: false
     };
 
     checkBoxHandler = (event) => {
@@ -27,15 +27,15 @@ class Card extends Component {
     };
 
     penHandler = () => {
-        const penActivated = this.state.penActivated;
+        const isEdit = this.state.isEdit;
         this.setState({
             oldHeader: this.state.header,
             oldTitle: this.state.title,
             oldContent: this.state.content,
             boxChecked: false,
-            penActivated: !penActivated,
-            borderColorClass: penActivated ? '' : ' border-primary',
-            textColorClass: penActivated ? '' : ' text-primary'
+            isEdit: !isEdit,
+            borderColorClass: isEdit ? '' : ' border-primary',
+            textColorClass: isEdit ? '' : ' text-primary'
         });
     };
 
@@ -65,14 +65,14 @@ class Card extends Component {
             <div className={`my-card card mb-3 my-4${this.state.borderColorClass}`}>
                 <div className='card-header'>
                     <span className='float-left'>
-                        <InputText penActivated={this.state.penActivated}
+                        <InputText isEdit={this.state.isEdit}
                                    value={this.state.header}
                                    maxLength={20}
                                    handler={this.updateHandler}
                                    fieldName={'header'} />
                     </span>
                     <span className='float-right'>
-                        <span className={`${this.state.penActivated ? 'd-none' : 'd-inline'}`}>
+                        <span className={`${this.state.isEdit ? 'd-none' : 'd-inline'}`}>
                             <span className='fa-stack fa-sm'>
                                 <input type='checkbox' checked={this.state.boxChecked} onChange={this.checkBoxHandler}/>
                             </span>
@@ -81,7 +81,7 @@ class Card extends Component {
                             </span>
                         </span>
 
-                        <span className={`${this.state.penActivated ? 'd-inline' : 'd-none'}`}>
+                        <span className={`${this.state.isEdit ? 'd-inline' : 'd-none'}`}>
                             <span className='fa-stack fa-sm' onClick={this.saveHandler}>
                                 <i className='far fa-save' />
                             </span>
@@ -93,7 +93,7 @@ class Card extends Component {
                 </div>
                 <div className={`card-body${this.state.textColorClass}`}>
                     <h5 className='card-title'>
-                        <InputText penActivated={this.state.penActivated}
+                        <InputText isEdit={this.state.isEdit}
                                    value={this.state.title}
                                    maxLength={25}
                                    handler={this.updateHandler}
@@ -101,7 +101,7 @@ class Card extends Component {
                     </h5>
 
                     <div className='card-text text-justify'>
-                        <InputTextarea penActivated={this.state.penActivated}
+                        <InputTextarea isEdit={this.state.isEdit}
                                        value={this.state.content}
                                        rows={3}
                                        cols={50}
