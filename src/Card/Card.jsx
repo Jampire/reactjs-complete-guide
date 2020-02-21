@@ -60,6 +60,32 @@ class Card extends Component {
 
     };
 
+    renderReadOnly() {
+        return (
+            <span className='d-inline'>
+                <span className='fa-stack fa-sm'>
+                    <input type='checkbox' checked={this.state.boxChecked} onChange={this.checkBoxHandler}/>
+                </span>
+                <span className='fa-stack fa-sm' onClick={this.penHandler}>
+                    <i className='fas fa-pen' />
+                </span>
+            </span>
+        );
+    }
+
+    renderEdit() {
+        return (
+            <span className='d-inline'>
+                <span className='fa-stack fa-sm' onClick={this.saveHandler}>
+                    <i className='far fa-save' />
+                </span>
+                <span className='fa-stack fa-sm' onClick={this.cancelHandler}>
+                    <i className='fas fa-times' />
+                </span>
+            </span>
+        );
+    }
+
     render() {
         return (
             <div className={`my-card card mb-3 my-4${this.state.borderColorClass}`}>
@@ -72,23 +98,7 @@ class Card extends Component {
                                    fieldName={'header'} />
                     </span>
                     <span className='float-right'>
-                        <span className={`${this.state.isEdit ? 'd-none' : 'd-inline'}`}>
-                            <span className='fa-stack fa-sm'>
-                                <input type='checkbox' checked={this.state.boxChecked} onChange={this.checkBoxHandler}/>
-                            </span>
-                            <span className='fa-stack fa-sm' onClick={this.penHandler}>
-                                <i className='fas fa-pen' />
-                            </span>
-                        </span>
-
-                        <span className={`${this.state.isEdit ? 'd-inline' : 'd-none'}`}>
-                            <span className='fa-stack fa-sm' onClick={this.saveHandler}>
-                                <i className='far fa-save' />
-                            </span>
-                            <span className='fa-stack fa-sm' onClick={this.cancelHandler}>
-                                <i className='fas fa-times' />
-                            </span>
-                        </span>
+                        {this.state.isEdit ? this.renderEdit() : this.renderReadOnly()}
                     </span>
                 </div>
                 <div className={`card-body${this.state.textColorClass}`}>

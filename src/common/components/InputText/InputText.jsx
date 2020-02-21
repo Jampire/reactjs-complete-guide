@@ -9,7 +9,7 @@ class InputText extends Component {
         return (
             <div className='d-block fa-xs'>
                 <input type='text' maxLength={this.props.maxLength} value={this.props.value}
-                       onChange={this.props.handler.bind(this, this.props.fieldName)}/>
+                       onChange={event => this.props.handler(this.props.fieldName, event)}/>
             </div>
         );
     }

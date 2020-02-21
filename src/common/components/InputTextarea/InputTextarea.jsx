@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class InputTextarea extends Component {
     renderText() {
         const style = {
-            'white-space': 'pre'
+            whiteSpace: 'pre'
         };
 
         return <div className='d-block' style={style}>{this.props.value}</div>;
@@ -13,7 +13,7 @@ class InputTextarea extends Component {
         return (
             <div className='d-block fa-xs'>
                 <textarea value={this.props.value} rows={this.props.rows} cols={this.props.cols}
-                          onChange={this.props.handler.bind(this, this.props.fieldName)}/>
+                          onChange={event => this.props.handler(this.props.fieldName, event)}/>
             </div>
         );
     }
