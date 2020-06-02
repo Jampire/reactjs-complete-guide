@@ -106,8 +106,8 @@ class Card extends Component {
         const isEdit = !this.props.mainToggle && this.state.isEdit;
         if (this.props.mainToggle) {
             controlButtons = this.renderReadOnly();
-            borderColorClass = '';
-            textColorClass = '';
+            borderColorClass = this.state.isEdit ? '' : borderColorClass;
+            textColorClass = this.state.isEdit ? '' : textColorClass;
             header = this.state.oldHeader;
             title = this.state.oldTitle;
             content = this.state.oldContent;
