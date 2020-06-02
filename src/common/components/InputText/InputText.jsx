@@ -15,10 +15,10 @@ class InputText extends Component {
     }
 
     render() {
+        let render = this.props.isEdit ? this.renderInput() : this.renderText();
+
         return (
-            <span>
-                {this.props.isEdit ? this.renderInput() : this.renderText()}
-            </span>
+            <span>{render}</span>
         );
     }
 }

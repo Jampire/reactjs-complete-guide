@@ -1,0 +1,30 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+body {
+  padding-top: 56px;
+}
+
+.App {
+  text-align: center;
+
+  input[type=checkbox] {
+    visibility:hidden;
+    vertical-align: top;
+  }
+
+  input[type=checkbox]::before {
+    visibility: visible;
+    font-size: 15px;
+    display: inline-block;
+    //letter-spacing: 5px;
+    content: "\f0c8"; // \f096, \f00c
+    font-family: 'Font Awesome 5 Free';
+  }
+
+  input[type=checkbox]:checked::before {
+    content: "\f14a"; // \f00c
+    //letter-spacing: 5px;
+    font-family: 'Font Awesome 5 Free';
+  }
+}
